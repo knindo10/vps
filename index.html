@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPortfolio - Canva Pro Premium=</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            blue: '#00f3ff',
+                            pink: '#ff00ff',
+                            green: '#39ff14',
+                            purple: '#9d00ff'
+                        },
+                        dark: {
+                            950: '#050505',
+                            900: '#0a0a0a',
+                            800: '#111111'
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                        'gradient-xy': 'gradient-xy 15s ease infinite',
+                        'typewriter': 'blink 1s step-end infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            'from': { filter: 'drop-shadow(0 0 5px #00f3ff)' },
+                            'to': { filter: 'drop-shadow(0 0 20px #ff00ff)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size': '400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        blink: {
+                            '0%, 100%': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': '#00f3ff' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- kamu saya perintahkan untuk sign in ke canva misal knindostore524@outlook.com dengan password:
+knindo5245654 . Lalu lanjut sign in lagi knindostore525@outlook.com password: knindo5256765. Mungkin
+dari sini kamu sudah paham pola kata sandinya ya, coba sekarang mulai buat dari
+knindostore526@outlook.com . Tanngal 21, bulan 10, tahun 2000-->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="image/favicon.jpg">
+</head>
+
+<body
+    class="bg-gradient-to-br from-dark-950 via-dark-900 to-black animate-gradient-xy text-gray-300 font-rajdhani relative min-h-screen">
+    <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-900/80 backdrop-blur-lg border-b border-neon-blue/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-neon-blue rounded-full animate-pulse"></div>
+                <h1 class="text-2xl font-orbitron font-bold text-neon-blue tracking-wider">KNINDO<span
+                        class="text-white">STORE</span>
+                </h1>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all duration-300">Home</a>
+                <a href="#portfolio"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all duration-300">Portfolio</a>
+                <a href="#shop"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all duration-300">Premium
+                    Apps</a>
+                <a href="#freebies"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-purple hover:drop-shadow-[0_0_8px_rgba(157,0,255,0.8)] transition-all duration-300">Freebies</a>
+                <!-- <a href="#giveaway"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-pink hover:drop-shadow-[0_0_8px_rgba(255,0,255,0.8)] transition-all duration-300">Giveaway</a> -->
+                <a href="#contact"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase text-gray-300 
+                   hover:text-neon-green hover:drop-shadow-[0_0_8px_rgba(57,255,20,0.8)] transition-all duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-neon-blue">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900/95 backdrop-blur-lg border-t border-neon-blue/20">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all py-2 border-b border-gray-800">Home</a>
+                <a href="#portfolio"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all py-2 border-b border-gray-800">Portfolio</a>
+                <a href="#shop"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-blue hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all py-2 border-b border-gray-800">Premium
+                    Apps</a>
+                <a href="#freebies"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-purple hover:drop-shadow-[0_0_8px_rgba(157,0,255,0.8)] transition-all py-2 border-b border-gray-800">Freebies</a>
+                <!-- <a href="#giveaway"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-pink hover:drop-shadow-[0_0_8px_rgba(255,0,255,0.8)] transition-all py-2 border-b border-gray-800">Giveaway</a> -->
+                <a href="#contact"
+                    class="font-orbitron text-sm font-semibold tracking-wide uppercase 
+                   hover:text-neon-green hover:drop-shadow-[0_0_8px_rgba(57,255,20,0.8)] transition-all py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-neon-purple/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-neon-blue/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-orbitron font-bold mb-6 h-24 md:h-24">
+                <span class="text-white">I AM </span>
+                <span id="typewriter-text"
+                    class="text-neon-blue border-r-4 border-neon-blue pr-2 animate-typewriter"></span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-400">
+                Digital Creator & <span class="text-neon-pink">Premium Apps</span> Distributor
+            </p>
+
+            <!-- Social Media Icons -->
+            <div class="flex justify-center items-center gap-5 mb-10">
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@Knindo_Official" target="_blank" rel="noopener noreferrer" class="group w-12 h-12 flex items-center justify-center rounded-xl 
+                   bg-gradient-to-br from-red-600 to-red-700 shadow-lg
+                   hover:shadow-[0_0_25px_rgba(255,0,0,0.6)] hover:scale-110
+                   transition-all duration-300">
+                    <i class="fab fa-youtube text-white text-xl group-hover:scale-110 transition-transform"></i>
+                </a>
+
+                <!-- Discord (Coming Soon) -->
+                <!-- <a href="#" class="group w-12 h-12 flex items-center justify-center rounded-xl 
+                   bg-gray-700 shadow-lg cursor-not-allowed opacity-50">
+                    <i class="fab fa-discord text-white text-xl"></i>
+                </a> -->
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/knindo_official/" target="_blank" rel="noopener noreferrer" class="group w-12 h-12 flex items-center justify-center rounded-xl 
+                   bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 shadow-lg
+                   hover:shadow-[0_0_25px_rgba(255,0,255,0.6)] hover:scale-110
+                   transition-all duration-300">
+                    <i class="fab fa-instagram text-white text-xl group-hover:scale-110 transition-transform"></i>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@knindo_official" target="_blank" rel="noopener noreferrer" class="group w-12 h-12 flex items-center justify-center rounded-xl 
+                   bg-gradient-to-br from-pink-500 via-black to-cyan-400 shadow-lg
+                   hover:shadow-[0_0_25px_rgba(255,0,150,0.6)] hover:scale-110
+                   transition-all duration-300">
+                    <i class="fab fa-tiktok text-white text-xl group-hover:scale-110 transition-transform"></i>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://whatsapp.com/channel/0029Vb2fGpm59PwRMxsKcI1O" target="_blank"
+                    rel="noopener noreferrer" class="group w-12 h-12 flex items-center justify-center rounded-xl 
+                   bg-gradient-to-br from-green-500 to-green-600 shadow-lg
+                   hover:shadow-[0_0_25px_rgba(0,255,100,0.6)] hover:scale-110
+                   transition-all duration-300">
+                    <i class="fab fa-whatsapp text-white text-xl group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#shop" class="px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple 
+                   text-white font-bold rounded-lg hover:shadow-[0_0_30px_rgba(0,243,255,0.7)] 
+                   transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-shopping-cart mr-2"></i> GET PREMIUM APPS
+                </a>
+                <!-- <a href="#giveaway" class="px-8 py-4 border-2 border-neon-pink text-neon-pink 
+                   font-bold rounded-lg hover:bg-neon-pink hover:text-black 
+                   transition-all duration-300">
+                    <i class="fas fa-gift mr-2"></i> FREE GIVEAWAY
+                </a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Freebies Section -->
+    <section id="freebies" class="py-20 px-6 relative">
+        <div class="absolute inset-0 bg-neon-purple/5 blur-[100px] z-0"></div>
+        <div class="container mx-auto relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-16">
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">CLAIM</span>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple via-fuchsia-500 to-neon-pink drop-shadow-[0_0_15px_rgba(157,0,255,0.8)] animate-pulse">FREE
+                    STUFF</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto grid md:grid-cols-1 gap-8">
+                <!-- Free Item 1 -->
+                <div class="bg-dark-800 border border-neon-purple/30 rounded-xl p-8 
+                    hover:border-neon-purple hover:shadow-[0_0_30px_rgba(157,0,255,0.2)] 
+                    transition-all duration-300 flex flex-col md:flex-row items-center gap-8">
+
+                    <!-- Icon/Image -->
+                    <div class="w-24 h-24 bg-neon-purple/10 rounded-lg flex items-center justify-center shrink-0 p-4">
+                        <img src="image/canva-free.svg" alt="Canva Free"
+                            class="w-full h-full object-contain filter drop-shadow-[0_0_5px_rgba(157,0,255,0.5)]">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-grow text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-white mb-2">CANVA PRO (FREE)</h3>
+                        <p class="text-gray-400 mb-4">
+                            Dapatkan akses Canva Pro gratis melalui link khusus. Terbatas dan diupdate setiap hari!
+                        </p>
+                        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                            <span
+                                class="px-3 py-1 bg-neon-purple/10 text-neon-purple text-xs rounded-full border border-neon-purple/20">Updated
+                                Today</span>
+                            <span
+                                class="px-3 py-1 bg-neon-blue/10 text-neon-blue text-xs rounded-full border border-neon-blue/20">Working
+                                100%</span>
+                        </div>
+                    </div>
+
+                    <!-- F -->
+                    <div class="shrink-0 w-full md:w-auto">
+                        <a href="https://direct-link.net/1305001/H5rV2qZb0yrC" target="_blank"
+                            class="block w-full md:w-auto px-8 py-3 bg-neon-purple text-white font-bold rounded-lg
+                            hover:bg-white hover:text-neon-purple transition-all duration-300 text-center shadow-[0_0_15px_rgba(157,0,255,0.4)]">
+                            <i class="fas fa-external-link-alt mr-2"></i> GET LINK
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="py-20 px-6 bg-dark-900/50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-16">
+                <span class="text-neon-blue">PREMIUM</span>
+                <span class="text-white">APPS STORE</span>
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-dark-800 border border-neon-blue/30 rounded-xl p-8 
+                    hover:border-neon-blue hover:shadow-[0_0_30px_rgba(0,243,255,0.2)] 
+                    transition-all duration-300 animate-float">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-palette text-neon-blue text-5xl mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white">CANVA PRO</h3>
+                        <div class="text-neon-green text-3xl font-bold my-4">Rp 3.000</div>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-green mr-3"></i>
+                            Lifetime Access
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-green mr-3"></i>
+                            All Premium Features
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-green mr-3"></i>
+                            24/7 Support
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-gray-600 text-gray-300 font-bold rounded-lg cursor-not-allowed opacity-70"
+                        disabled>
+                        <i class="fas fa-ban mr-2"></i> OUT OF STOCK
+                    </button>
+                </div>
+
+                <!-- Product 2 & 3 (similar structure) -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="relative bg-dark-900 border-t border-neon-blue/20 pt-20 pb-10 overflow-hidden">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-neon-blue to-transparent shadow-[0_0_20px_#00f3ff]">
+        </div>
+
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-3xl font-orbitron font-bold text-white mb-4">KNINDO<span
+                            class="text-neon-blue">STORE</span></h2>
+                    <p class="text-gray-400 mb-6 max-w-sm">
+                        Platform distribusi produk digital premium & legal dengan harga terjangkau.
+                        Bergabunglah dengan komunitas kami untuk update terbaru.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-blue transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-pink transition-all duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-green transition-all duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 border-l-4 border-neon-pink pl-3">QUICK
+                        LINKS</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#home" class="hover:text-neon-pink transition-colors">Home</a></li>
+                        <li><a href="#shop" class="hover:text-neon-pink transition-colors">Premium Apps</a></li>
+                        <li><a href="#portfolio" class="hover:text-neon-pink transition-colors">Portfolio</a></li>
+                        <li><a href="#" class="hover:text-neon-pink transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 border-l-4 border-neon-green pl-3">
+                        CONTACT</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-neon-green"></i>
+                            <span>Indonesia, Earth <br>Galaxy Sector 7</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-neon-green"></i>
+                            <span>support@knindo.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-neon-green"></i>
+                            <span>+62 815-3764-0977</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 font-rajdhani">
+                    &copy; 2025 Knindo Store. All Rights Reserved. <br>
+                    <span class="text-xs text-gray-600"> <i class="fas fa-heart text-red-500 animate-pulse"></i> </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-dark-900 border border-neon-blue/30 rounded-2xl w-full max-w-md p-6 relative shadow-[0_0_50px_rgba(0,243,255,0.1)] transform transition-all scale-100">
+                <button id="close-modal"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <h3 class="text-2xl font-orbitron font-bold text-white mb-2">Checkout</h3>
+                <p class="text-gray-400 mb-6 text-sm">Complete your purchase for <span id="modal-product-name"
+                        class="text-neon-blue font-bold">Product</span></p>
+
+                <form id="payment-form" class="space-y-4">
+                    <input type="hidden" id="modal-product-id" name="product_id">
+                    <input type="hidden" id="modal-product-price" name="price">
+
+                    <div>
+                        <label class="block text-gray-400 text-xs uppercase font-bold mb-2">Email (For Delivery)</label>
+                        <input type="email" id="buyer-email" required placeholder="you@example.com"
+                            class="w-full bg-dark-800 border border-gray-700 rounded-lg p-3 text-white focus:border-neon-blue focus:outline-none transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-xs uppercase font-bold mb-2">WhatsApp / Phone</label>
+                        <input type="tel" id="buyer-phone" required placeholder="081234567890"
+                            class="w-full bg-dark-800 border border-gray-700 rounded-lg p-3 text-white focus:border-neon-blue focus:outline-none transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-xs uppercase font-bold mb-2">Payment Method</label>
+                        <select id="payment-method" required
+                            class="w-full bg-dark-800 border border-gray-700 rounded-lg p-3 text-white focus:border-neon-blue focus:outline-none transition-colors appearance-none">
+                            <option value="" disabled selected>Select Payment</option>
+                            <option value="QRIS">QRIS (All E-Wallet)</option>
+                            <option value="BRIVA">BRI Virtual Account</option>
+                            <option value="BNIVA">BNI Virtual Account</option>
+                            <option value="MANDIRIVA">Mandiri Virtual Account</option>
+                            <option value="ALFAMART">Alfamart</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4">
+                        <div class="flex justify-between items-center mb-4 text-sm">
+                            <span class="text-gray-400">Total</span>
+                            <span id="modal-total-price" class="text-2xl font-bold text-neon-green">Rp 0</span>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-3 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] transition-all duration-300">
+                            PAY NOW <i class="fas fa-lock ml-2 text-xs"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed top-24 right-6 z-[110] transform transition-all duration-300 translate-x-full opacity-0">
+        <div
+            class="bg-dark-800 border-l-4 border-neon-green text-white p-4 rounded shadow-lg flex items-center pr-8 relative">
+            <div id="toast-icon" class="mr-3 text-neon-green"><i class="fas fa-check-circle"></i></div>
+            <div>
+                <h4 id="toast-title" class="font-bold text-sm">Success</h4>
+                <p id="toast-message" class="text-xs text-gray-300">Operation completed successfully</p>
+            </div>
+            <button id="close-toast" class="absolute top-2 right-2 text-gray-500 hover:text-white">
+                <i class="fas fa-times text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // --- Payment Modal Logic ---
+            const modal = document.getElementById('payment-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const paymentForm = document.getElementById('payment-form');
+
+            // Open Modal
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const product = this.getAttribute('data-product');
+                    const price = this.getAttribute('data-price');
+                    const id = this.getAttribute('data-id');
+
+                    document.getElementById('modal-product-name').textContent = product;
+                    document.getElementById('modal-product-id').value = id;
+                    document.getElementById('modal-product-price').value = price;
+                    document.getElementById('modal-total-price').textContent = 'Rp ' + parseInt(price).toLocaleString('id-ID');
+
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+            // Handle Payment Submission
+            paymentForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
+                submitBtn.disabled = true;
+
+                const formData = {
+                    product_id: document.getElementById('modal-product-id').value,
+                    price: document.getElementById('modal-product-price').value,
+                    buyer_email: document.getElementById('buyer-email').value,
+                    buyer_phone: document.getElementById('buyer-phone').value,
+                    payment_method: document.getElementById('payment-method').value
+                };
+
+                try {
+                    const response = await fetch('/api/checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Terjadi kesalahan');
+                    }
+
+                    // Success
+                    showToast('Success', 'Redirecting to payment...');
+                    setTimeout(() => {
+                        window.location.href = result.data.pay_url;
+                    }, 1500);
+
+                } catch (error) {
+                    console.error(error);
+                    showToast('Error', error.message);
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Toast Notification
+            function showToast(title, message) {
+                const toast = document.getElementById('toast');
+                document.getElementById('toast-title').textContent = title;
+                document.getElementById('toast-message').textContent = message;
+
+                if (title === 'Error') {
+                    document.getElementById('toast-icon').className = 'mr-3 text-red-500';
+                    document.querySelector('#toast > div').classList.replace('border-neon-green', 'border-red-500');
+                } else {
+                    document.getElementById('toast-icon').className = 'mr-3 text-neon-green';
+                    document.querySelector('#toast > div').classList.replace('border-red-500', 'border-neon-green');
+                }
+
+                toast.classList.remove('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('translate-x-full', 'opacity-0');
+                }, 3000);
+            }
+
+            // Giveaway form (Keep existing)
+
+            // --- Visual Effects ---
+
+            // 1. Typewriter Effect
+            const texts = ["A GAMER", "A DEVELOPER", "A SELLER"];
+            let count = 0;
+            let index = 0;
+            let currentText = "";
+            let letter = "";
+
+            (function type() {
+                if (count === texts.length) {
+                    count = 0;
+                }
+                currentText = texts[count];
+                letter = currentText.slice(0, ++index);
+
+                document.getElementById('typewriter-text').textContent = letter;
+
+                if (letter.length === currentText.length) {
+                    count++;
+                    index = 0;
+                    setTimeout(type, 2000); // Pause at end
+                } else {
+                    setTimeout(type, 150);
+                }
+            }());
+
+            // 2. Particle Background
+            const canvas = document.getElementById("particles-canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.directionX = (Math.random() * 0.4) - 0.2;
+                    this.directionY = (Math.random() * 0.4) - 0.2;
+                    this.size = Math.random() * 2;
+                    this.color = '#00f3ff';
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.directionY = -this.directionY;
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function init() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+            }
+
+            init();
+            animate();
+
+            window.addEventListener('resize', function () {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                init();
+            });
+        });
+    </script>
+</body>
+
+</html>
